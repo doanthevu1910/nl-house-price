@@ -49,5 +49,5 @@ while count <= len(df) - 1:
         print(count)
         df['nearby rating'][count] = np.average(place_rating)
 
-df.to_csv("data2.csv", index=False)
+df.to_csv('data/rotterdam2.csv', index=False)
 
