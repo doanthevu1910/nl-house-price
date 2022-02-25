@@ -1,9 +1,11 @@
 from googleplaces import GooglePlaces, types, lang
 import numpy as np
 import pandas as pd
+import config
 
-api_key = 'AIzaSyAoqfPlFnCtV5IeXSL_4s7ry0V1HQPGgD8'
-df = pd.read_csv('data/rotterdam1.csv')
+api_key = config.gmaps_api
+
+df = pd.read_csv('data/den-haag1.csv')
 
 df['nearby rating'] = 0
 
@@ -49,4 +51,4 @@ while count <= len(df) - 1:
         print(count)
         df['nearby rating'][count] = np.average(place_rating)
 
-df.to_csv('data/rotterdam2.csv', index=False)
+df.to_csv('data/den-haag2.csv', index=False)
