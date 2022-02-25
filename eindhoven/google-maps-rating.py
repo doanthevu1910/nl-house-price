@@ -4,7 +4,8 @@ import pandas as pd
 import config
 
 api_key = config.gmaps_api
-df = pd.read_csv('data/rotterdam1.csv')
+
+df = pd.read_csv('data/eindhoven1.csv')
 
 df['nearby rating'] = 0
 
@@ -50,4 +51,4 @@ while count <= len(df) - 1:
         print(count)
         df['nearby rating'][count] = np.average(place_rating)
 
-df.to_csv('data/rotterdam2.csv', index=False)
+df.to_csv('data/eindhoven2.csv', index=False)
