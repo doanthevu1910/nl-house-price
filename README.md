@@ -36,6 +36,7 @@ prediction.py: Take in postcode, size, number of bedrooms, year constructed, and
 # Remarks
 
 - Size seems to be the biggest influence on price
+- Distance has almost no effect
 - Higher (city) population, higher price
 
 # References
