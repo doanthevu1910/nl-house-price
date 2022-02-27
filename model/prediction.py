@@ -4,6 +4,9 @@ from geopy.extra.rate_limiter import RateLimiter
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
+import datetime
+now = datetime.datetime.now()
+
 from googleplaces import GooglePlaces, types, lang
 import config
 
@@ -96,19 +99,42 @@ def google_maps_rating(latitude, longitude):
 
     return np.average(place_rating)
 
-def predict(postcode, size, kamers, year, city):
+def predict(postcode, size, kamers, year, cityname):
+
+    lat = coordinates(postcode)[0]
+    lng = coordinates(postcode)[1]
+
+    std_distance(coordinates('1102AA')[0], coordinates('1102AA')[1], 'Amsterdam')
 
     newdata = pd.DataFrame().reindex_like(df1)
     newdata.fillna(value=0, inplace=True)
     del newdata['std price']
     newdata = newdata.iloc[[1]]
 
-    newdata['size'] = 21
-    newdata['kamers'] = 1
-    newdata['age'] = 7
-    newdata['nearby rating'] = 5
-    newdata['std distance1'] = 2
+    newdata['size'] = size
+    newdata['kamers'] = kamers
+    newdata['age'] = now.year - year
+    newdata['nearby rating'] = google_maps_rating(lat, lng)
+    newdata['std distance1'] = std_distance(lat, lng, cityname)
 
-    a = rf.predict(newdata)[0]
+    predicted_std_price = rf.predict(newdata)[0]
 
-    np.average(df[df['city'] == 'Amsterdam']['price'])*a
+    if cityname == 'Amsterdam':
+        predicted_price = predicted_std_price * ams_avg_price
+
+    if cityname == 'Den Haag':
+        predicted_price = predicted_std_price * dhg_avg_price
+
+    if cityname == 'Eindhoven':
+        predicted_price = predicted_std_price * ein_avg_price
+
+    if cityname == 'Rotterdam':
+        predicted_price = predicted_std_price * rot_avg_price
+
+    if cityname == 'Utrecht':
+        predicted_price = predicted_std_price * utr_avg_price
+
+    return predicted_price
+
+predict('1102AA', 20, 1, 2014, 'Amsterdam')
+
