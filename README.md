@@ -31,7 +31,7 @@ tuning.py: Find the best parameters
 
 model-tuned.py: Model with the best parameters
 
-prediction.py: Function that takes in postcode, size, number of bedrooms, year constructed, and city, then return the predicted price
+prediction.py: Take in postcode, size, number of bedrooms, year constructed, and city, then return the predicted price
 
 # Remarks
 
