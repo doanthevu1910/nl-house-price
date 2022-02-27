@@ -1,5 +1,5 @@
 # nl-house-price
-Predict house price in 5 biggest cities in the Netherlands (Amsterdam, Den Haag, Eindhoven, Rotterdam, and Utrecht) based on data scraped from Pararius (compliant to ToS) and Google Places.
+Predict house price in 5 biggest cities in the Netherlands (Amsterdam, Den Haag, Eindhoven, Rotterdam, and Utrecht) based on data scraped from [Pararius](https://www.pararius.nl/koopwoningen) (compliant to ToS) and Google Places.
 
 ![gmaps heatmap](graphs/export.png)
 
@@ -23,3 +23,25 @@ gmaps.py: Draw heatmap based on price
 
 plots.py: Draw price histograms
 
+# Random forest
+
+model.py: Initial model
+
+tuning.py: Find the best parameters
+
+model-tuned.py: Model with the best parameters
+
+prediction.py: Function that takes in postcode, size, number of bedrooms, year constructed, and city, then return the predicted price
+
+# Remarks
+
+- Size seems to be the biggest influence on price
+- Higher population, higher price
+
+# References
+
+[gmaps](https://github.com/pbugnion/gmaps)
+
+[python-google-places](https://github.com/slimkrazy/python-google-places)
+
+[ams-house-price](https://github.com/doanthevu1910/ams-house-price)
