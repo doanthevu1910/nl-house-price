@@ -104,8 +104,6 @@ def predict(postcode, size, kamers, year, cityname):
     lat = coordinates(postcode)[0]
     lng = coordinates(postcode)[1]
 
-    std_distance(coordinates('1102AA')[0], coordinates('1102AA')[1], 'Amsterdam')
-
     newdata = pd.DataFrame().reindex_like(df1)
     newdata.fillna(value=0, inplace=True)
     del newdata['std price']
