@@ -19,7 +19,7 @@ geocode = RateLimiter(geocoder.geocode, min_delay_seconds=1, return_value_on_exc
 # add 1 second between calls
 
 point1 = (51.4431, 5.4803) #eindhoven centraal
-# point2 = (52.0702, 4.3217)
+# point2 = ()
 
 i = 0
 

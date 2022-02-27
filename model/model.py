@@ -5,10 +5,6 @@ from sklearn.ensemble import RandomForestRegressor
 
 df = pd.read_csv('data/data1.csv')
 
-df.head()
-
-df.columns
-
 df1 = df.drop(['price', 'postcode', 'year', 'latitude', 'longitude', 'distance1',  'distance2', 'city'], axis=1)
 
 target = np.array(df['std price'])
